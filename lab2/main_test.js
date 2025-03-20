@@ -1,7 +1,6 @@
-const { test } = require('node:test');
-const assert = require('node:assert');
-const { Application, MailSystem } = require('./main.js');
-const fs = require('fs');
+const test = require('node:test');
+const assert = require('assert');
+const { Application, MailSystem } = require('./main');
 
 /*
     function coverage testing:
