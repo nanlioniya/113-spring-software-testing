@@ -15,6 +15,7 @@ const fs = require('fs');
         - notifySelected
 */
 
+// MailSystem test
 test('MailSystem write test', (t) => {
     const mail = new MailSystem();
     const result = mail.write('Test');
@@ -104,12 +105,12 @@ test('Application notifySelected test', async (t) => {
         let writeCount = 0;
         let sendCount = 0;
         app.mailSystem.write = (name) => {
-        writeCount++;
-        return `Congrats, ${name}!`;
+            writeCount++;
+            return `Congrats, ${name}!`;
         };
         app.mailSystem.send = (name, context) => {
-        sendCount++;
-        return true;
+            sendCount++;
+            return true;
         };
         
         app.notifySelected();
