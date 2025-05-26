@@ -6,12 +6,12 @@
     "clear-text",
     "progress"
   ],
-  "testRunner": "command",
-  "commandRunner": {
-    "command": "mocha test/calculator.mocha.js"
-  },
-  "coverageAnalysis": "all",
+  "testRunner": "mocha",
+  "coverageAnalysis": "perTest",
   "mutate": ["src/**/*.js"],
+  "mochaOptions": {
+    "spec": ["test/calculator.mocha.js"]
+  },
   "ignorePatterns": ["node_modules/**/*"],
   "tempDirName": ".stryker-tmp",
   "concurrency": 1,

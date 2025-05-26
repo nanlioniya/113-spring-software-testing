@@ -8,11 +8,11 @@
   ],
   "testRunner": "command",
   "commandRunner": {
-    "command": "mocha test/calculator.mocha.js"
+    "command": "npm test"
   },
   "coverageAnalysis": "all",
   "mutate": ["src/**/*.js"],
-  "ignorePatterns": ["node_modules/**/*"],
+  "ignorePatterns": ["node_modules/**/*", "test/**/*"],
   "tempDirName": ".stryker-tmp",
   "concurrency": 1,
   "cleanTempDir": true

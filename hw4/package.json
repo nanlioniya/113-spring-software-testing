@@ -1,14 +1,15 @@
 {
-  "name": "hw4",
+  "name": "calculator-test",
   "version": "1.0.0",
-  "description": "software testing hw4",
+  "description": "Date calculator testing",
   "main": "src/calculator.js",
   "scripts": {
-    "test": "node --test",
-    "mutate": "npx stryker run"
+    "test": "mocha test/calculator.mocha.js",
+    "stryker": "stryker run"
   },
-  "license": "MIT",
   "devDependencies": {
-    "@stryker-mutator/core": "^9.0.1"
+    "@stryker-mutator/core": "^7.0.0",
+    "@stryker-mutator/mocha-runner": "^7.0.0",
+    "mocha": "^10.0.0"
   }
 }

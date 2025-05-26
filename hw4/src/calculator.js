@@ -1,54 +1,38 @@
-class Calculator {
-    static main(month1, day1, month2, day2, year) {
-        if (month1 < 1 || month1 > 12) {
-            throw new Error("invalid month1");
-        }
-        if (month2 < 1 || month2 > 12) {
-            throw new Error("invalid month2");
-        }
-        if (day1 < 1 || day1 > 31) {
-            throw new Error("invalid day1");
-        }
-        if (day2 < 1 || day2 > 31) {
-            throw new Error("invalid day2");
-        }
-        if (year < 1 || year > 10000) {
-            throw new Error("invalid year");
-        }
-        if (month1 === month2 && day1 > day2) {
-            throw new Error("day1 must be less than day2 if month1 is equal to month2");
-        }
-        if (month1 > month2) {
-            throw new Error("month1 must be less than month2");
-        }
+// src/calculator.js
+const Calculator = {
+    isValid: function(month, day) {
+        if (month < 1 || month > 12) return false;
+        
+        const monthDays = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        return day >= 1 && day <= monthDays[month];
+    },
 
-        return this.#calculate(month1, day1, month2, day2, year);
+    toDays: function(month, day) {
+        let days = day;
+        const monthDays = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        
+        for (let m = 1; m < month; m++) {
+        days += monthDays[m];
+        }
+        
+        return days;
+    },
+
+    calculate: function(month1, day1, month2, day2) {
+        if (!this.isValid(month1, day1) || !this.isValid(month2, day2)) {
+        return -1;
+        }
+        
+        const days1 = this.toDays(month1, day1);
+        const days2 = this.toDays(month2, day2);
+        
+        return Math.abs(days2 - days1);
+    },
+
+    main: function(month1, day1, month2, day2) {
+        return this.calculate(month1, day1, month2, day2);
     }
-
-    static #calculate(month1, day1, month2, day2, year) {
-        let numDays;
-
-        if (month2 === month1) {
-            numDays = day2 - day1;
-        } else {
-            // ignore 0 index
-            let daysIn = [0, 31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-            if (this.#isLeapYear(year))
-                daysIn[2] = 29;
-            else
-                daysIn[2] = 28;
-
-            numDays = day2 + (daysIn[month1] - day1);
-
-            for (let i = month1 + 1; i <= month2 - 1; i++)
-                numDays += daysIn[i];
-        }
-        return numDays;
-    }
-
-    static #isLeapYear(year) {
-        return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
-    }
-}
+};
 
 module.exports = Calculator;
+  

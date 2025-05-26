@@ -1,0 +1,15 @@
+{
+  "name": "hw4",
+  "version": "1.0.0",
+  "description": "software testing hw4",
+  "main": "src/calculator.js",
+  "scripts": {
+    "test": "mocha test/calculator.mocha.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@stryker-mutator/core": "^9.0.1",
+    "@stryker-mutator/mocha-runner": "^9.0.1",
+    "mocha": "^11.5.0"
+  }
+}
